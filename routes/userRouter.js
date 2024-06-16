@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {RegisterUser} = require("../controllers/Authentication.js")
+const {RegisterUser , LoginUser , LogoutUser} = require("../controllers/Authentication.controller.js")
 
 // so the url will be router to this part from the 
 router.get("/" , function (req , res) {
@@ -8,4 +8,7 @@ router.get("/" , function (req , res) {
 })
 
 router.post("/register" , RegisterUser)
+router.post("/login" , LoginUser)
+router.post("/logout" , LogoutUser)
+
 module.exports = router 

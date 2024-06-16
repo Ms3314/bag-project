@@ -1,6 +1,9 @@
+// seperating concerns for the owner 
+const mongoose = require('mongoose')
+
 const ProductSchema =  mongoose.Schema({
     image : String ,
-    name : String,
+    product_name : String,
     price : String ,
     discount : {
         type : Number ,
