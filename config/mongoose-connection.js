@@ -1,9 +1,11 @@
 const mongoose = require('mongoose')
+const dbgr = require('debug')('DEV:db')
+const config = require("config")
 
 mongoose
-.connect("mongodb://127.0.0.1:27017/localhost/bag-project")
+.connect(`${config.get('MONGO_URI')}/bag-project`)
 .then(()=> {
-    console.log("connected")
+    console.log("connected to the database")
     // debuggers can be used instead for better use 
 })
 .catch((err)=> {

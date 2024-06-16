@@ -1,8 +1,12 @@
 // seperating concerns for the owner 
 const mongoose = require('mongoose')
 
-const userSchema =  mongoose.Schema({
-    fullname : String,
+const ownerSchema =  mongoose.Schema({
+    fullname : {
+        type : String,
+        minLength : 3 ,
+        trm : true
+    },
     email : String,
     password : String,
     isAdmin : Boolean,

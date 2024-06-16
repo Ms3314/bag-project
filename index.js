@@ -6,8 +6,8 @@ const db = require("./config/mongoose-connection");
 const ownerRouter = require("./routes/ownersRouter.js");
 const usersRouter = require("./routes/userRouter.js");
 const productsRouter = require("./routes/productsRouter.js");
+require("dotenv").config();
 
-console.log("hello")
 app.use(cookieParser());
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
@@ -23,4 +23,6 @@ app.get("/" , (req ,res) => {
     res.send("hello moto")
 })
 
-app.listen(3000)
+app.listen(3000 , () => {
+    console.log("server is running on port 3000")
+})
