@@ -25,21 +25,13 @@ if (process.env.NODE_ENV === 'DEVELOPMENT') {
     })
 }
 
-router.post("/addProducts" ,async (req , res) => {
-    let {product_name , price , discount , bgcolor , panelcolor , textcolor} = req.body
-    const createdProduct = await productModel.create({
-        product_name,
-        price,
-        discount,
-        bgcolor,
-        panelcolor,
-        textcolor,
-    })
-    res.status(201).send(createdProduct)
+//
+
+router.get("/admin" , function (req , res) {
+    let success = req.flash("success")
+    res.render("createproducts.ejs",{success})
 })
 
-router.get("/" , function (req , res) {
-    res.send("hello its working ")
-})
+
 
 module.exports = router 

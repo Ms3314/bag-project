@@ -1,6 +1,6 @@
-const express = require("express")
-const app = express()
-var cookieParser = require('cookie-parser')
+const express = require("express");
+const app = express();
+var cookieParser = require('cookie-parser');
 const path = require("path");
 const ejs = require("ejs");
 const db = require("./config/mongoose-connection");
@@ -20,20 +20,21 @@ app.use(
         resave: false,
         saveUninitialized: false,
     })
-)
-app.use(flash())
-app.use(express.json())
+);
+app.use(flash());
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.static(path.join(__dirname, 'public')));
-app.set("view engine", "ejs")
+app.set("view engine", "ejs");
 
-// we are setting up routes so that after this .. they go to there type of thing ..xox seperating of concerns
-app.use("/owner" , ownerRouter)
-app.use("/users" , usersRouter)
-app.use("/products", productsRouter)
-app.use("/" , indexRouter)
+// Define routes without Multer middleware
+app.use("/owner", ownerRouter);
+app.use("/users", usersRouter);
+app.use("/", indexRouter);
 
-app.listen(3000 , () => {
-    console.log("server is running on port 3000")
-})
+// Use Multer middleware only for routes that handle file uploads
+app.use("/products", productsRouter);
+
+app.listen(3000, () => {
+    console.log("Server is running on port 3000");
+});
